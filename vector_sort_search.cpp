@@ -5,17 +5,24 @@
 
 using namespace std;
 
-struct PersonalRecord {
-    string name;
+class PersonalRecord {
+    public :
+	string name;
     string dob; // Format: YYYY-MM-DD
     string telephone;
 };
 
-void displayRecords(const vector<PersonalRecord> & records) {
+void displayRecords( vector<PersonalRecord> & records) {
     cout << "Name\tDOB\tTelephone\n";
-    for (const auto & record : records) {
+    for ( auto & record : records) {
         cout << record.name << "\t" << record.dob << "\t" << record.telephone << "\n";
     }
+}
+
+
+bool compareByName(PersonalRecord& a,PersonalRecord& b)
+{
+	return a.name < b.name;
 }
 
 int main() {
@@ -38,9 +45,7 @@ int main() {
         records.push_back(record);
     }
 
-    sort(records.begin(), records.end(), [](const PersonalRecord& a, const PersonalRecord& b) {
-        return a.name < b.name;
-    });
+    sort(records.begin(), records.end(), compareByName);
 
     cout << "\nSorted Records:\n";
     displayRecords(records);
@@ -50,7 +55,7 @@ int main() {
     getline(cin, searchName);
 
     bool found = false;
-    for (const auto& record : records) {
+    for ( auto & record : records) {
         if (record.name == searchName) {
             cout << "Record found: " << record.name << ", " << record.dob << ", " << record.telephone << "\n";
             found = true;
