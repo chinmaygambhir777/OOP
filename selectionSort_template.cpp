@@ -1,9 +1,10 @@
 #include<iostream>
 using namespace std;
+#define size 10
 int n;
 
 template<class T>
-void sel(T A[])
+void sel(T A[size])
 {
     int i,j,min;
     T temp;
@@ -28,8 +29,8 @@ void sel(T A[])
 
 int main()
 {
-    int A[n];
-    float B[n];
+    int A[size];
+    float B[size];
     int i;
     int ch;
     do
